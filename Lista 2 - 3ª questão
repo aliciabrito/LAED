@@ -1,0 +1,23 @@
+lista = [5, 3, 1, 10, 2, 13, 9, 12, 4, 7]
+soma = 0
+for n in lista:
+    soma += n
+media = soma / len(lista)
+mais_proximo = lista[0]
+if lista[0] > media:
+    menor_diferença = lista[0] - media
+else:
+    menor_diferença = media - lista[0]
+for i in range(1, len(lista)):
+    n = lista[i]
+    if n > media:
+        diferença = n - media
+    else:
+        diferença = media - n
+    
+    if diferença < menor_diferença:
+        menor_diferença = diferença
+        mais_proximo = n
+print(mais_proximo) 
+
+#O algoritmo é O(n)
