@@ -4,7 +4,6 @@ contados = []
 achou = False
 for i in range(len(lista)):
     n = lista[i]
-
     visto = False
     for c in contados:
         if c == n:
