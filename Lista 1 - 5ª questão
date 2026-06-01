@@ -1,0 +1,31 @@
+#Lista não ordenada:
+lista = [9, 42, 21, 14, 25, 3, 19, 33, 45, 6]
+achou = False
+for i in range(len(lista)):
+    for j in range(len(lista)):
+        if i != j and lista[j] == 2 * lista[i]:
+            print("Sim, os números", lista[i], "e", lista[j])
+            achou = True
+            break
+    if achou:
+        break
+if not achou:
+    print("Não tem")
+
+#Lista ordenada:
+lista = [3, 6, 9, 14, 19, 21, 25, 33, 42, 45]   # exemplo já ordenado
+i = 0
+j = 1
+achou = False
+while j < len(lista) and not achou:
+    if lista[j] == 2 * lista[i]:
+        print("Sim, os números", lista[i], "e", lista[j])
+        achou = True
+    elif lista[j] < 2 * lista[i]:
+        j = j + 1
+    else:
+        i = i + 1
+        if i == j:
+            j = j + 1
+if not achou:
+    print("Não tem")
