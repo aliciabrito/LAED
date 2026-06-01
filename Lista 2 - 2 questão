@@ -1,0 +1,9 @@
+lista = [9, 42, 21, 14, 25, 3, 19, 33, 45, 6]
+k = 4
+lista_ordenada = sorted(lista, reverse=True)
+if k >= 1 and k <= len(lista_ordenada):
+    print(lista_ordenada[k-1])
+else:
+    print("k inválido")
+
+#o algoritmo é O(n log n), onde n é o tamanho da lista
