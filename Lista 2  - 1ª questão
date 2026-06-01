@@ -1,0 +1,25 @@
+lista = [9, 42, 21, 14, 25, 3, 19, 33, 45, 6]
+if len(lista) < 3:
+    print("Lista muito pequena")
+else:
+    primeiro = lista[0]
+    segundo = lista[1]
+    terceiro = lista[2]
+    if primeiro < segundo:
+        primeiro, segundo = segundo, primeiro
+    if primeiro < terceiro:
+        primeiro, terceiro = terceiro, primeiro
+    if segundo < terceiro:
+        segundo, terceiro = terceiro, segundo
+    for i in range(3, len(lista)):
+        n = lista[i]
+        if num > primeiro:
+            terceiro = segundo
+            segundo = primeiro
+            primeiro = n
+        elif n > segundo:
+            terceiro = segundo
+            segundo = n
+        elif n > terceiro:
+            terceiro = n 
+    print(terceiro)
