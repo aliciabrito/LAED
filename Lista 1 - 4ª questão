@@ -1,0 +1,18 @@
+lista = [9, 2, 7, 7, 2, 2, 1, 7, 7, 9]
+verificados = []
+achou = False
+for i in range(len(lista)):
+    n = lista[i]
+    if n in verificados:
+        continue
+    verificados.append(n)
+    cont = 0
+    for j in range(len(lista)):
+        if lista[j] == n:
+            cont = cont + 1
+    if n % 2 != 0 and cont % 2 != 0:
+        print("Sim, o", n)
+        achou = True
+        break
+if not achou:
+    print("Não tem")
