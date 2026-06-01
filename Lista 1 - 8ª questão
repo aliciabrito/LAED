@@ -1,0 +1,23 @@
+U = [9, 2, 7, 7, 2, 2, 1, 7, 7, 9]
+V = [2, 15, 19, 12, 33, 9, 17, 41, 54, 8]
+vistos = []
+primeiro = True
+for n in U:
+    esta_em_v = False
+    for c in V:
+        if c == n:
+            esta_em_v = True
+            break
+    if esta_em_v:
+        visto = False
+        for p in vistos:
+            if p == n:
+                visto = True
+                break
+        if not visto:
+            if primeiro:
+                print(n, end=" ")
+                primeiro = False
+            else:
+                print(",", n, end=" ")
+            vistos.append(n)
