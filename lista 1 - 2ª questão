@@ -1,0 +1,10 @@
+lista = [9, 42, 21, 14, 28, 3, 19, 32, 46, 6]
+impares = []
+for n in lista:
+    if n % 2 != 0:
+        impares.append(n)
+if len(impares) < 2:
+    print("Não tem segundo maior ímpar")
+else:
+    impares.sort()
+    print(impares[-2]) 
