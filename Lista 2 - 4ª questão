@@ -17,3 +17,5 @@ for k in lista:
         break
 if not achou:
     print("Não tem elemento isolado")
+
+#o algoritmo é O(n²)
