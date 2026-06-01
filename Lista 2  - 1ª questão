@@ -5,4 +5,4 @@ if len(lista_ordenada) >= 3:
 else:
     print("A lista não tem 3 elementos")
 
-#o tempo de execução do algoritmo é O(n)
+#o tempo de execução do algoritmo é O(n log n)
