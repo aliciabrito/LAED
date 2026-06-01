@@ -1,0 +1,27 @@
+lista = [9, 42, 21, 14, 25, 3, 19, 33, 45, 6]
+k = 31
+p = True
+mais_proximo = 0
+menor_diferenca = 0
+encontrou = False
+for n in lista:
+    if n == k:
+        encontrou = True
+        break
+    if n > k:
+        diferenca = n - k
+    else:
+        diferenca = k - n
+    
+    if p:
+        mais_proximo = n
+        menor_diferenca = diferenca
+        p = False
+    else:
+        if diferenca < menor_diferenca:
+            menor_diferenca = diferenca
+            mais_proximo = n
+if encontrou:
+    print(k)
+else:
+    print(mais_proximo)
