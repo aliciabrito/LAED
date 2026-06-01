@@ -1,0 +1,19 @@
+lista = [17, 2, 8, 1, 7, 13, 9, 12, 4, 16]
+achou = False
+for k in lista:
+    tem_menos = False
+    for c in lista:
+        if c == k - 1:
+            tem_menos = True
+            break
+    tem_mais = False
+    for c in lista:
+        if c == k + 1:
+            tem_mais = True
+            break
+    if not tem_menos and not tem_mais:
+        print("Sim, o", k)
+        achou = True
+        break
+if not achou:
+    print("Não tem elemento isolado")
