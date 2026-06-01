@@ -1,0 +1,25 @@
+lista = [7, 1, 9, 1, 7, 3, 9, 2, 1, 6, 8, 3]
+k = 3
+contados = []
+achou = False
+for i in range(len(lista)):
+    n = lista[i]
+
+    visto = False
+    for c in contados:
+        if c == n:
+            visto = True
+            break
+    if visto:
+        continue
+    cont = 0
+    for j in range(len(lista)):
+        if lista[j] == n:
+            cont = cont + 1
+    contados.append(n)
+    if cont >= k:
+        print("Sim, o", n)
+        achou = True
+        break
+if not achou:
+    print("Não tem nenhum elemento que aparece pelo menos", k, "vezes")
