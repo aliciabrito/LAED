@@ -24,4 +24,4 @@ for i in range(len(lista)):
 if not achou:
     print("Não tem nenhum elemento que aparece pelo menos", k, "vezes")
 
-#O algoritmo é O(n²)
+#O algoritmo é O(n²) no pior caso
