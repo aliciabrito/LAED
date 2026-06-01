@@ -1,0 +1,18 @@
+U = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+V = [7, 2, 3, 1, 6, 5, 9, 10, 4, 8]
+U_ord = sorted(U)
+V_ord = sorted(V)
+if len(U_ord) != len(V_ord):
+    print("Não são permutações")
+else:
+    iguais = True
+    for i in range(len(U_ord)):
+        if U_ord[i] != V_ord[i]:
+            iguais = False
+            break
+    if iguais:
+        print("São permutações")
+    else:
+        print("Não são permutações")
+
+#O algoritmo é O(n log n)
