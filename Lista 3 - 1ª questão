@@ -1,0 +1,5 @@
+a) Melhor caso:
+O melhor caso acontece quando a lista já está ordenada (crescente). Aí a Partição() vai separar os elementos, mas como tudo já está no lugar, ela só faz uma varredura rápida. Depois, quando se aplica o algoritmo da bolha nas duas metades, como cada metade já está ordenada, o bolha só dá uma passada em cada uma, percebe que não houve troca e já para. No fim, o tempo total fica por volta de O(n), ou seja, cresce de forma linear com o tamanho da lista.
+
+b)Pior caso:
+O pior caso é quando a lista está em ordem decrescente. A Partição() vai separar de forma desbalanceada, deixando uma das metades quase vazia e a outra com quase todos os elementos. Essa parte grande vai ser ordenada pelo bolha, sabemos que o algoritmo da bolha no seu pior caso (lista invertida) precisa de várias passadas, dando O(n²). Como a Partição() é só O(n), o tempo total acaba sendo O(n²) também. Nesse caso, o programa fica bem lento para listas grandes.
