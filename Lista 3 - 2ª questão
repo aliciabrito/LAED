@@ -1,0 +1,3 @@
+a)Sim. A última passada nos primeiros 2n/3 conserta os elementos que estavam soltos no final, deixando tudo no lugar.
+
+b)Cada vez que a gente usa o bolha num pedaço de tamanho 2n/3, ele demora O((2n/3)²) = O(n²). Fazemos isso 3 vezes, então o tempo total também é O(n²). 
