@@ -1,0 +1,91 @@
+class No:
+    def __init__(self, x):
+        self.x = x
+        self.ant = None
+        self.prox = None
+
+def criar(v):
+    ini = None
+    fim = None
+    for x in v:
+        n = No(x)
+        if ini is None:
+            ini = n
+        else:
+            fim.prox = n
+            n.ant = fim
+        fim = n
+    return ini
+
+def valores(p):
+    r = []
+    while p:
+        r.append(p.x)
+        p = p.prox
+    return r
+
+def busca(L, x):
+    for p in L:
+        q = p
+        while q and q.x < x:
+            q = q.prox
+        if q and q.x == x:
+            return True
+        if p and p.x > x:
+            return False
+    return False
+
+def inserir(L, x):
+    for i, p in enumerate(L):
+        if p is None or x <= ultimo(p):
+            q = p
+            if q is None:
+                L[i] = No(x)
+                return
+            if x < q.x:
+                n = No(x)
+                n.prox = q
+                q.ant = n
+                L[i] = n
+                return
+            while q.prox and q.prox.x < x:
+                q = q.prox
+            n = No(x)
+            n.prox = q.prox
+            n.ant = q
+            if q.prox:
+                q.prox.ant = n
+            q.prox = n
+            return
+
+    if L:
+        q = L[-1]
+        while q.prox:
+            q = q.prox
+        n = No(x)
+        q.prox = n
+        n.ant = q
+
+def remover(L, x):
+    for i, p in enumerate(L):
+        q = p
+        while q and q.x < x:
+            q = q.prox
+        if q and q.x == x:
+            if q.ant:
+                q.ant.prox = q.prox
+            else:
+                L[i] = q.prox
+            if q.prox:
+                q.prox.ant = q.ant
+            return True
+        if q and q.x > x:
+            return False
+    return False
+
+def ultimo(p):
+    while p.prox:
+        p = p.prox
+    return p.x
+
+#Tempo de execução: O(m + k)
