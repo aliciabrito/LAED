@@ -1,0 +1,47 @@
+class No:
+    def __init__(self, valor, pos):
+        self.valor = valor
+        self.pos = pos
+        self.prev = self.next = None
+
+def busca_indice(p, k):
+    while p and p.pos < k:
+        p = p.next
+    return p.valor if p and p.pos == k else 0
+
+def busca_valor(p, x):
+    while p and p.valor != x:
+        p = p.next
+    return p.pos if p else -1
+
+def atualizacao(p, x, k):
+    while p and p.pos < k:
+        p = p.next
+    if p and p.pos == k:
+        p.valor = x
+
+def criar(v):
+    h = t = None
+    for i, x in enumerate(v, 1):
+        if x:
+            n = No(x, i)
+            if t:
+                t.next, n.prev = n, t
+            else:
+                h = n
+            t = n
+    return h
+
+v = list(map(int, input().split()))
+p = criar(v)
+k = int(input())
+x = int(input())
+
+print(busca_indice(p, k))
+print(busca_valor(p, x))
+
+x = int(input())
+k = int(input())
+atualizacao(p, x, k)
+
+#Tempo de execução: O(m)
