@@ -1,0 +1,55 @@
+class No:
+    def __init__(self, valor):
+        self.valor = valor
+        self.prox = None
+
+def criar_lista(valores):
+    inicio = None
+    fim = None
+    for valor in valores:
+        novo = No(valor)
+        if inicio is None:
+            inicio = novo
+            fim = novo
+        else:
+            fim.prox = novo
+            fim = novo
+    return inicio
+
+def particionar(p, k):
+    menores = None
+    fim_menores = None
+    maiores = None
+    fim_maiores = None
+    atual = p
+    while atual is not None:
+        proximo = atual.prox
+        atual.prox = None
+        if atual.valor <= k:
+            if menores is None:
+                menores = atual
+                fim_menores = atual
+            else:
+                fim_menores.prox = atual
+                fim_menores = atual
+        else:
+            if maiores is None:
+                maiores = atual
+                fim_maiores = atual
+            else:
+                fim_maiores.prox = atual
+                fim_maiores = atual
+        atual = proximo
+    if menores is None:
+        return maiores
+    fim_menores.prox = maiores
+    return menores
+
+def imprimir_lista(p):
+    atual = p
+    while atual is not None:
+        print(atual.valor, end=" -> ")
+        atual = atual.prox
+    print("None")
+
+    #Tempo de execução: o(n)
