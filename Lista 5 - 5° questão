@@ -1,0 +1,30 @@
+class No:
+    def __init__(self, valor, pos):
+        self.valor = valor
+        self.pos = pos
+        self.prev = None
+        self.next = None
+
+def vetor_esparso(v):
+    inicio = fim = None
+    for i, x in enumerate(v, 1):
+        if x != 0:
+            n = No(x, i)
+            if fim:
+                fim.next = n
+                n.prev = fim
+            else:
+                inicio = n
+            fim = n
+    return inicio
+
+def mostrar(p):
+    while p:
+        print(f"({p.valor}, {p.pos})", end=" <-> " if p.next else "\n")
+        p = p.next
+
+v = list(map(int, input().split()))
+p = vetor_esparso(v)
+mostrar(p)
+
+#Tempo de execução: O(n)
