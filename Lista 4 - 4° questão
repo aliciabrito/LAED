@@ -34,3 +34,5 @@ def imprimir_lista(p):
         print(atual.valor, end=" -> ")
         atual = atual.prox
     print("None")
+
+#Tempo de execução: O(n)
