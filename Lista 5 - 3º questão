@@ -1,0 +1,68 @@
+class No:
+    def __init__(self, valor):
+        self.valor = valor
+        self.ant = None
+        self.prox = None
+
+class Lista:
+    def __init__(self):
+        self.inicio = self.fim = None
+
+    def inserir(self, valor):
+        n = No(valor)
+        if not self.inicio:
+            self.inicio = self.fim = n
+        else:
+            n.ant = self.fim
+            self.fim.prox = n
+            self.fim = n
+            
+    def trocar(self, a, b):
+        ant, prox = a.ant, b.prox
+        if ant:
+            ant.prox = b
+        else:
+            self.inicio = b
+        if prox:
+            prox.ant = a
+        else:
+            self.fim = a
+        b.ant = ant
+        b.prox = a
+        a.ant = b
+        a.prox = prox
+
+    def varredura(self):
+        p = self.inicio
+        while p and p.prox:
+            q = p.prox
+            if p.valor > q.valor:
+                self.trocar(p, q)
+                p = q
+            else:
+                p = p.prox
+
+    def ordenar(self):
+        while True:
+            p = self.inicio
+            trocou = False
+            while p and p.prox:
+                if p.valor > p.prox.valor:
+                    self.trocar(p, p.prox)
+                    trocou = True
+                    p = p.prox
+                else:
+                    p = p.prox
+            if not trocou:
+                break
+
+    def exibir(self):
+        p = self.inicio
+        while p:
+            print(p.valor, end="")
+            if p.prox:
+                print(" <-> ", end="")
+            p = p.prox
+        print()
+
+#Tempo de execução: O(n²)
