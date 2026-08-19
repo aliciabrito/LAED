@@ -1,0 +1,47 @@
+class No:
+    def __init__(self, valor):
+        self.valor = valor
+        self.ant = self.prox = None
+
+def criar_lista(v):
+    ini = fim = None
+    for x in v:
+        n = No(x)
+        if ini is None:
+            ini = n
+        else:
+            fim.prox = n
+            n.ant = fim
+        fim = n
+    return ini
+
+def lista_de_listas(ini, k):
+    L = []
+    p = ini
+    while p:
+        sub = []
+        for _ in range(k):
+            if not p:
+                break
+            sub.append(p.valor)
+            p = p.prox
+        L.append(sub)
+    return L
+
+def buscar(L, x):
+    for sub in L:
+        if sub[0] > x:
+            return False
+        if x <= sub[-1]:
+            return x in sub
+    return False
+
+v = list(range(1, 101))
+lista = criar_lista(v)
+L = lista_de_listas(lista, 10)
+
+print(L)
+print(buscar(L, 73))
+print(buscar(L, 150))
+
+#Tempo de execução: O(n)
