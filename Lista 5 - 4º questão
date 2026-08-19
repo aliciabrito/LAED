@@ -1,0 +1,46 @@
+class Node:
+    def __init__(self, v):
+        self.v = v
+        self.prev = None
+        self.next = None
+
+def criar_lista(a):
+    h = t = None
+    for v in a:
+        n = Node(v)
+        if not h:
+            h = n
+        else:
+            t.next = n
+            n.prev = t
+        t = n
+    return h, t
+
+def particionar(h, t, k):
+    q, r = h, t
+    while q and r and q != r and q != r.next:
+        while q and q.v <= k:
+            q = q.next
+        while r and r.v > k:
+            r = r.prev
+        if not q or not r or q == r or q == r.next:
+            break
+        q.v, r.v = r.v, q.v
+        q = q.next
+        r = r.prev
+    return h
+
+def valores(h):
+    a = []
+    while h:
+        a.append(h.v)
+        h = h.next
+    return a
+
+a = list(map(int, input().split()))
+k = int(input())
+h, t = criar_lista(a)
+h = particionar(h, t, k)
+print(*valores(h))
+
+#Tempo de execução: O(n)
