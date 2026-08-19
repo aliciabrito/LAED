@@ -33,3 +33,5 @@ def moverMaiorParaFim(p):
     noMaior.prox = None
     ultimo.prox = noMaior
     return p
+
+#Tempo de execução: O(n)
