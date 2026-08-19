@@ -1,0 +1,49 @@
+class No:
+    def __init__(self, valor):
+        self.valor = valor
+        self.prox = None
+
+def criar_lista(valores):
+    inicio = None
+    fim = None
+    for valor in valores:
+        novo = No(valor)
+        if inicio is None:
+            inicio = novo
+            fim = novo
+        else:
+            fim.prox = novo
+            fim = novo
+    return inicio
+
+def intersecao(p1, p2):
+    resultado = None
+    fim = None
+    atual = p1
+    while atual is not None:
+        aux = p2
+        encontrado = False
+        while aux is not None:
+            if atual.valor == aux.valor:
+                encontrado = True
+                break
+            aux = aux.prox
+        if encontrado:
+            novo = No(atual.valor)
+            if resultado is None:
+                resultado = novo
+                fim = novo
+            else:
+                fim.prox = novo
+                fim = novo
+        atual = atual.prox
+    return resultado
+
+def imprimir_lista(p):
+    atual = p
+    while atual is not None:
+        print(atual.valor, end=" -> ")
+        atual = atual.prox
+    print("None")
+
+#Tempo de execução: O(n + m)
