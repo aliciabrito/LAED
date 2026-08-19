@@ -1,0 +1,77 @@
+class No:
+    def __init__(self, valor):
+        self.valor = valor
+        self.ant = None
+        self.prox = None
+
+class Lista:
+    def __init__(self):
+        self.inicio = None
+        self.fim = None
+
+    def inserir(self, valor):
+        novo = No(valor)
+        if self.inicio is None:
+            self.inicio = self.fim = novo
+        elif valor <= self.inicio.valor:
+            novo.prox = self.inicio
+            self.inicio.ant = novo
+            self.inicio = novo
+        elif valor >= self.fim.valor:
+            novo.ant = self.fim
+            self.fim.prox = novo
+            self.fim = novo
+        else:
+            p = self.inicio
+            while p.valor < valor:
+                p = p.prox
+            novo.ant = p.ant
+            novo.prox = p
+            p.ant.prox = novo
+            p.ant = novo
+
+    def atualizar(self, x, y):
+        p = self.inicio
+        while p and p.valor != x:
+            p = p.prox
+        if p is None:
+            return False
+        if p.ant:
+            p.ant.prox = p.prox
+        else:
+            self.inicio = p.prox
+        if p.prox:
+            p.prox.ant = p.ant
+        else:
+            self.fim = p.ant
+        p.valor = y
+        p.ant = p.prox = None
+        if self.inicio is None:
+            self.inicio = self.fim = p
+        elif y <= self.inicio.valor:
+            p.prox = self.inicio
+            self.inicio.ant = p
+            self.inicio = p
+        elif y >= self.fim.valor:
+            p.ant = self.fim
+            self.fim.prox = p
+            self.fim = p
+        else:
+            q = self.inicio
+            while q.valor < y:
+                q = q.prox
+            p.ant = q.ant
+            p.prox = q
+            q.ant.prox = p
+            q.ant = p
+        return True
+    def exibir(self):
+        p = self.inicio
+        while p:
+            print(p.valor, end="")
+            if p.prox:
+                print(" <-> ", end="")
+            p = p.prox
+        print()
+
+#Tempo de execução: O(n)
