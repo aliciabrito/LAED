@@ -1,0 +1,35 @@
+class Node:
+    def __init__(self, valor=None):
+        self.valor = valor
+        self.prox = None
+
+def moverMaiorParaFim(p):
+    if p is None or p.prox is None:
+        return p
+
+    maior = p.valor
+    noMaior = p
+    anteriorMaior = None
+    anterior_curr = None
+    ultimo = p
+    curr = p
+
+    while curr is not None:
+        if curr.valor > maior:
+            maior = curr.valor
+            noMaior = curr
+            anteriorMaior = anterior_curr
+        anterior_curr = curr
+        curr = curr.prox
+    ultimo = anterior_curr
+
+    if noMaior == ultimo:
+        return p
+
+    if anteriorMaior is None:
+        p = noMaior.prox
+    else:
+        anteriorMaior.prox = noMaior.prox
+    noMaior.prox = None
+    ultimo.prox = noMaior
+    return p
